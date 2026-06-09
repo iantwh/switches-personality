@@ -1,0 +1,366 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+.qwrap{font-family:'Poppins',sans-serif;max-width:620px;margin:0 auto;padding:12px 16px 48px}
+.logo-row{display:flex;align-items:center;gap:10px;margin-bottom:36px;padding-top:8px}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:#3DCD58}
+.logo-text{font-size:13px;font-weight:600;color:var(--color-text-primary);letter-spacing:.02em}
+.logo-sub{font-size:10px;font-weight:400;color:var(--color-text-secondary);letter-spacing:.06em}
+.intro-pill{display:inline-flex;align-items:center;gap:7px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.intro-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:#3DCD58;flex-shrink:0}
+h1.big{font-size:clamp(28px,5vw,42px);font-weight:700;line-height:1.05;color:var(--color-text-primary);margin-bottom:14px}
+h1.big em{color:#3DCD58;font-style:normal}
+.intro-sub{font-size:15px;font-weight:400;color:var(--color-text-secondary);line-height:1.65;margin-bottom:32px;max-width:480px}
+.archetype-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.atag{background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);font-size:11px;font-weight:500;padding:6px 14px;border-radius:100px;font-family:'Poppins',sans-serif}
+.go-btn{background:#3DCD58;color:#0A2F24;border:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:16px 40px;border-radius:100px;cursor:pointer;transition:all .2s;box-shadow:0 3px 16px rgba(61,205,88,.25)}
+.go-btn:hover{background:#48E068;transform:translateY(-2px)}
+.go-btn:active{transform:scale(.98)}
+.prog-wrap{margin-bottom:32px}
+.prog-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.prog-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.08em;text-transform:uppercase}
+.prog-num{font-size:12px;font-weight:700;color:var(--color-text-primary)}
+.prog-track{background:var(--color-background-secondary);height:3px;border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:#3DCD58;border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.q-cat{font-size:10px;font-weight:600;letter-spacing:.14em;color:#3DCD58;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.q-cat::before{content:'';width:20px;height:2.5px;background:#3DCD58;display:block;border-radius:2px}
+.q-text{font-size:clamp(18px,3vw,26px);font-weight:700;line-height:1.2;color:var(--color-text-primary);margin-bottom:28px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:18px 20px;cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:flex-start;gap:14px;width:100%;font-family:'Poppins',sans-serif}
+.opt:hover{background:var(--color-background-secondary);border-color:var(--color-border-primary);transform:translateX(3px)}
+.opt.sel{background:#E8F9EC;border:1.5px solid #3DCD58}
+.opt-letter{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:10px;color:var(--color-text-secondary);flex-shrink:0;margin-top:1px;transition:all .2s}
+.opt.sel .opt-letter{background:#3DCD58;border-color:#3DCD58;color:#0A2F24}
+.opt-title{font-weight:600;font-size:14px;color:var(--color-text-primary);margin-bottom:4px;line-height:1.3}
+.opt-desc{font-size:12px;font-weight:400;color:var(--color-text-secondary);line-height:1.5}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px}
+.back-btn{background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:12px 20px;border-radius:100px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:500;font-size:12px;transition:all .2s}
+.back-btn:hover{border-color:var(--color-border-primary);color:var(--color-text-primary)}
+.next-btn{background:#3DCD58;color:#0A2F24;border:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;padding:14px 32px;border-radius:100px;cursor:pointer;transition:all .2s;opacity:.3;pointer-events:none}
+.next-btn.on{opacity:1;pointer-events:all}
+.next-btn.on:hover{background:#48E068}
+.next-btn.on:active{transform:scale(.98)}
+.res-pill{display:inline-flex;align-items:center;gap:7px;background:#E8F9EC;border:0.5px solid #C4EFD0;color:#0A2F24;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:18px}
+.res-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:#3DCD58}
+.res-name{font-size:clamp(30px,5.5vw,50px);font-weight:700;color:var(--color-text-primary);line-height:1;margin-bottom:6px}
+.res-name span{color:#3DCD58}
+.res-tagline{font-size:clamp(14px,2vw,18px);font-weight:600;color:var(--color-text-primary);margin-bottom:24px}
+.res-divider{width:44px;height:3.5px;background:#3DCD58;margin-bottom:22px;border-radius:2px}
+.res-catchphrase{background:var(--color-background-secondary);border-left:3px solid #3DCD58;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:14px 18px;margin-bottom:24px;font-size:14px;font-weight:500;color:var(--color-text-primary);line-height:1.5}
+.res-catchphrase cite{display:block;font-size:11px;font-weight:500;color:#3DCD58;text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-style:normal}
+.res-desc{font-size:14px;font-weight:400;color:var(--color-text-secondary);line-height:1.75;margin-bottom:28px;max-width:540px}
+.traits{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:28px}
+.trait-card{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 12px}
+.trait-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:5px}
+.trait-val{font-size:13px;font-weight:600;color:var(--color-text-primary);line-height:1.3}
+.rumour-box{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:16px 18px;margin-bottom:28px;display:flex;gap:12px;align-items:flex-start}
+.rumour-icon{font-size:18px;color:#3DCD58;flex-shrink:0;margin-top:2px}
+.rumour-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-secondary);margin-bottom:4px}
+.rumour-text{font-size:13px;font-weight:500;color:var(--color-text-primary);line-height:1.5;font-style:italic}
+.bars-wrap{margin-bottom:24px}
+.bar-label-row{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:12px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.bar-name{font-size:11px;font-weight:500;color:var(--color-text-secondary);width:130px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:4px;background:var(--color-background-secondary);border-radius:2px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;background:var(--color-border-secondary);transition:width 1s cubic-bezier(.4,0,.2,1)}
+.bar-fill.w{background:#3DCD58}
+.bar-pct{font-size:10px;font-weight:700;color:var(--color-text-secondary);width:26px;text-align:right;flex-shrink:0}
+.bar-pct.w{color:var(--color-text-primary)}
+.also-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--color-text-secondary);margin-bottom:12px}
+.also-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:7px 16px;border-radius:100px;font-size:11px;font-weight:500}
+.res-actions{display:flex;gap:10px;flex-wrap:wrap}
+.retry-btn{background:transparent;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);padding:14px 26px;border-radius:100px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:500;font-size:12px;transition:all .2s}
+.retry-btn:hover{border-color:var(--color-border-primary);color:var(--color-text-primary)}
+.share-btn{background:#3DCD58;color:#0A2F24;border:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;padding:14px 28px;border-radius:100px;cursor:pointer;transition:all .2s}
+.share-btn:hover{background:#48E068}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fade{animation:fadeIn .45s ease}
+.slide{animation:slideUp .35s ease}
+</style>
+
+<div class="qwrap" id="root"></div>
+
+<script>
+const ARCHETYPES = {
+  courting: {
+    name: '"I\'m Not Dating,',
+    name2: "I'm Courting™\"",
+    tagline: "Dating with intention. Heavy intention.",
+    catchphrase: '"I\'m dating with intention."',
+    rumour: "Emotionally engaged before officially dating",
+    desc: "You don't do casual. Every coffee chat is a character assessment and every text back is a green flag audit. You've already mapped out the trajectory — courtship, counsel, covenant. You're not playing games; you're playing chess. Against yourself. At 1am. With a journal open.",
+    energyLabel: "Relational energy",
+    energy: "High intensity, low spontaneity",
+    loveStyle: "Acts of discernment",
+    redFlag: "Small talk",
+    vibe: "Pre-marital counselling at Starbucks",
+    others: ["God's Timing Lah", "Everything Is Spiritual", "See You at Every Ministry"]
+  },
+  timing: {
+    name: '"God\'s Timing',
+    name2: 'Lah"',
+    tagline: "Surrendered. Spiritually thriving. Romantically... pending.",
+    catchphrase: '"If it\'s from God, it won\'t miss me."',
+    rumour: "Waiting… but also hoping you try again later",
+    desc: "You've done the inner work. You've prayed through it, fasted over it, and arrived at full surrender. You're not anxious — you're trusting. You just also happen to notice when certain people look particularly anointed on Sunday. But you're not in a rush. Truly. (Please don't move on.)",
+    energyLabel: "Availability status",
+    energy: "Spiritually open, logistically unclear",
+    loveStyle: "Peaceful waiting",
+    redFlag: "Being rushed",
+    vibe: "Serene on the outside, group chat on the inside",
+    others: ["I'm Not Dating, I'm Courting™", "Fully Booked, Fully Blessed", "NPC (Main Character)"]
+  },
+  ministry: {
+    name: '"See You at',
+    name2: 'Every Ministry"',
+    tagline: "In everything. Knows everyone. Feeds people after.",
+    catchphrase: '"You joining for supper after?"',
+    rumour: "Entire church has done the mental 'what if'",
+    desc: "Church is not just your community — it's your ecosystem. You're on the worship team, the setup crew, and the prayer group WhatsApp. You know every new visitor's name before they've grabbed their welcome pack. You're not trying to be everyone's person. You just genuinely are.",
+    energyLabel: "Ministry count",
+    energy: "Fully embedded",
+    loveStyle: "Quality time (in groups)",
+    redFlag: "People who don't stay for supper",
+    vibe: "Social glue of the entire congregation",
+    others: ["God's Timing Lah", "Fully Booked, Fully Blessed", "I'm Not Dating, I'm Courting™"]
+  },
+  booked: {
+    name: '"Fully Booked,',
+    name2: 'Fully Blessed"',
+    tagline: "Calendar is a battlefield. Church is a premium slot.",
+    catchphrase: '"Next week I maybe free."',
+    rumour: "Availability is the real barrier, not singleness",
+    desc: "You're not unavailable — you're optimised. Career trajectory, personal growth, friendship maintenance, gym, side project, and somewhere in there: church, and theoretically, romance. You're not closed off. You're just operating at capacity. But your future partner will understand. Because they'll be the same.",
+    energyLabel: "Calendar availability",
+    energy: "Negative, but negotiable",
+    loveStyle: "Quality time (pre-scheduled)",
+    redFlag: "Last-minute plans",
+    vibe: "Google Calendar with a verse attached",
+    others: ["God's Timing Lah", "NPC (Main Character)", "See You at Every Ministry"]
+  },
+  npc: {
+    name: '"NPC at Church',
+    name2: '(Main Character)"',
+    tagline: "Arrives quietly. Leaves quietly. Depth unlocked on request.",
+    catchphrase: '"Ya good word today."',
+    rumour: "No one knows them… but everyone should",
+    desc: "You're not shy — you're selective. You observe more than you speak, and when you do speak, it lands. Your lore is extensive but not publicly broadcast. You've been attending for years and somehow remain a mystery to most. The right person will ask the right question. You're in no rush to volunteer the answer.",
+    energyLabel: "Visibility level",
+    energy: "Intentionally low",
+    loveStyle: "Quality time (one-on-one only)",
+    redFlag: "Being put on the spot",
+    vibe: "Side quest with main character energy",
+    others: ["God's Timing Lah", "I'm Not Dating, I'm Courting™", "Fully Booked, Fully Blessed"]
+  },
+  spiritual: {
+    name: '"Everything Is',
+    name2: 'Spiritual ✨"',
+    tagline: "Mixed signals? That's just spiritual warfare, babe.",
+    catchphrase: '"Let\'s pray about it."',
+    rumour: "You're not sure if you're dating… or in a prophecy",
+    desc: "For you, nothing is ordinary. A late text reply is a testing season. A vibe shift is warfare. You felt a release in your spirit to reach out, and you felt a withdrawal when they left the conversation on read. You mean well — deeply, sincerely well — and your faith is real. You just live about three metaphysical layers above casual.",
+    energyLabel: "Spiritual intensity",
+    energy: "Off the charts",
+    loveStyle: "Words of affirmation (very intense words)",
+    redFlag: "People who 'just think things happen'",
+    vibe: "Every conversation is also a prayer meeting",
+    others: ["I'm Not Dating, I'm Courting™", "God's Timing Lah", "See You at Every Ministry"]
+  }
+};
+
+const QUESTIONS = [
+  {
+    cat: "Sunday morning",
+    text: "Someone new sits next to you at church. What happens?",
+    opts: [
+      { l:"A", t:"You introduce yourself and immediately ask what they do and where they serve.", d:"Context-gathering begins immediately.", s:{ministry:3,booked:0,npc:0,courting:1,timing:0,spiritual:0} },
+      { l:"B", t:"You smile, maybe nod. If they speak first, you're warm. If not, peaceful coexistence.", d:"Low-key but not unwelcoming.", s:{npc:3,timing:1,booked:1,courting:0,ministry:0,spiritual:0} },
+      { l:"C", t:"You internally note whether they seem like someone who would stay for supper.", d:"Early screening in progress.", s:{courting:2,spiritual:1,ministry:1,timing:0,booked:0,npc:0} },
+      { l:"D", t:"You're half-present — you've already got three things on the mental list for after service.", d:"Physically here, operationally elsewhere.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "The group chat",
+    text: "Someone texts the young adults WhatsApp: \"Anyone free Saturday?\" You reply:",
+    opts: [
+      { l:"A", t:"\"What time? I have a thing till 4 but maybe after.\"", d:"Conditional, not impossible.", s:{booked:3,courting:0,timing:1,ministry:0,npc:0,spiritual:0} },
+      { l:"B", t:"\"Yes! What are we doing? Can we add supper after?\"", d:"Attendance confirmed before details.", s:{ministry:3,booked:0,npc:0,courting:0,timing:0,spiritual:0} },
+      { l:"C", t:"You read it, want to reply, don't commit, pray about it, bring it to the Lord.", d:"Saturday remains spiritually open.", s:{timing:3,spiritual:1,npc:1,courting:0,booked:0,ministry:0} },
+      { l:"D", t:"You reply \"I'll check and get back\", screenshot the message and analyse who else responded.", d:"Due diligence before commitment.", s:{courting:2,npc:1,booked:1,timing:0,ministry:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "Romantic interest",
+    text: "You notice someone at church who gives you feelings you haven't felt in a while. First move?",
+    opts: [
+      { l:"A", t:"Pray about it first. Then fast. Then pray again. Then wait for a sign.", d:"God will confirm when the time is right.", s:{timing:3,spiritual:2,courting:1,booked:0,ministry:0,npc:0} },
+      { l:"B", t:"Start a conversation. You already know their ministry, their small group, their brunch order.", d:"You've been building rapport for months, technically.", s:{ministry:3,booked:0,npc:0,courting:1,timing:0,spiritual:0} },
+      { l:"C", t:"Nothing yet. You observe carefully. If there's a pattern of proximity, you'll note it.", d:"Data collection phase. Patience is a virtue.", s:{npc:2,courting:3,timing:1,booked:0,ministry:0,spiritual:0} },
+      { l:"D", t:"Send a voice note about how God put them on your heart during your quiet time this morning.", d:"Transparent, vulnerable, spiritually framed.", s:{spiritual:3,timing:1,courting:1,booked:0,ministry:0,npc:0} }
+    ]
+  },
+  {
+    cat: "First coffee",
+    text: "You're finally getting coffee with someone you're interested in. The vibe is...",
+    opts: [
+      { l:"A", t:"Warm, curious, already in vision-alignment territory by the second cup.", d:"\"So where do you see yourself in five years\" but make it romantic.", s:{courting:3,spiritual:1,ministry:0,timing:0,booked:0,npc:0} },
+      { l:"B", t:"Relaxed and genuine — you ask good questions and the conversation just flows.", d:"You make them feel like the most interesting person in the room.", s:{ministry:2,npc:2,timing:1,courting:0,booked:0,spiritual:0} },
+      { l:"C", t:"You're mostly there in mind and body but somewhere around 20 minutes in you clock your 3pm.", d:"Presence is limited. But the coffee was good.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} },
+      { l:"D", t:"Deep. You share something you've never told anyone. Before the drinks arrive.", d:"Emotional vault: immediately open.", s:{spiritual:2,timing:2,courting:1,booked:0,ministry:0,npc:0} }
+    ]
+  },
+  {
+    cat: "Mixed signals",
+    text: "They were warm on Sunday but haven't replied to your text in two days. You:",
+    opts: [
+      { l:"A", t:"Log the pattern. Cross-reference with past interactions. Form a hypothesis.", d:"Analytical. Methodical. Slightly exhausting.", s:{courting:3,npc:1,booked:0,timing:0,ministry:0,spiritual:0} },
+      { l:"B", t:"Bring it to the Lord. Maybe this is a pruning season. Maybe it's warfare. Maybe both.", d:"Spiritual warfare dashboard: activated.", s:{spiritual:3,timing:2,courting:0,booked:0,ministry:0,npc:0} },
+      { l:"C", t:"Honestly forget about it for a few days because you have three deadlines, a meeting, and a gym sesh.", d:"Busyness as a coping mechanism. Functional.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} },
+      { l:"D", t:"Trust that if it's meant to be, it will be. You are at peace. (You are mostly at peace.)", d:"Surrendered on the outside. Refreshing the thread every few hours.", s:{timing:3,ministry:1,npc:1,courting:0,booked:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "The talking stage",
+    text: "What does \"talking\" to someone look like for you?",
+    opts: [
+      { l:"A", t:"A defined, intentional process. Both parties know what this is. Boundaries are clear. Purpose is stated.", d:"There's a terms and conditions. Verbally agreed upon.", s:{courting:3,booked:0,npc:0,timing:0,ministry:0,spiritual:0} },
+      { l:"B", t:"Long voice notes, deep prayers together, and at least one \"I feel God is saying something about us.\"", d:"Intimacy goes from zero to prophecy very fast.", s:{spiritual:3,timing:1,courting:1,booked:0,ministry:0,npc:0} },
+      { l:"C", t:"Naturally overlapping in the same social spaces until one day it just becomes something.", d:"Organic. Communal. Enabled by proximity.", s:{ministry:3,timing:1,npc:1,courting:0,booked:0,spiritual:0} },
+      { l:"D", t:"Slow. Thoughtful. Long gaps between messages that mean nothing, you're just both like that.", d:"Emotionally present but not urgently expressive.", s:{npc:3,booked:2,timing:1,courting:0,ministry:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "Church culture",
+    text: "Your pastor preaches on singleness. You:",
+    opts: [
+      { l:"A", t:"Take notes. Reflect on your own patterns. Wonder if this is personally directed.", d:"Sermon-as-mirror energy.", s:{courting:2,spiritual:2,timing:1,booked:0,ministry:0,npc:0} },
+      { l:"B", t:"Feel deeply seen. Maybe emotional. Grateful. Text the quote to three people immediately.", d:"Communal processor.", s:{ministry:3,timing:1,spiritual:1,courting:0,booked:0,npc:0} },
+      { l:"C", t:"Receive it peacefully. You're in a good place. You've done this season.", d:"Unruffled. Genuinely.", s:{timing:3,npc:2,booked:0,courting:0,ministry:0,spiritual:0} },
+      { l:"D", t:"Present physically. Mentally composing a reply email to a client.", d:"Respect for the Word, but the calendar doesn't pause.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "The big question",
+    text: "Someone from your church community asks why you're still single. You say:",
+    opts: [
+      { l:"A", t:"\"God's timing. I've surrendered the timeline and I have peace about it.\" (Pause.) \"Mostly.\"", d:"Anchored in faith. Human in the pauses.", s:{timing:3,spiritual:1,npc:0,courting:0,ministry:0,booked:0} },
+      { l:"B", t:"\"Honestly? I'm just really busy right now. But I'm open.\"", d:"True. Also convenient.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} },
+      { l:"C", t:"\"I'm looking for someone intentional. I'm not just dating — I'm discerning.\"", d:"Clear positioning. Slightly intimidating.", s:{courting:3,spiritual:1,npc:0,timing:0,ministry:0,booked:0} },
+      { l:"D", t:"Shrug warmly. \"Not sure lah. Maybe you know someone?\" — and mean it genuinely.", d:"Community-minded, genuinely unbothered.", s:{ministry:3,npc:1,timing:1,courting:0,booked:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "Your love language",
+    text: "Be honest — what does your ideal connection actually look like?",
+    opts: [
+      { l:"A", t:"Someone who matches your depth and pace. No games. Just two people building something real, slowly.", d:"Depth over speed. Always.", s:{npc:3,courting:2,timing:1,booked:0,ministry:0,spiritual:0} },
+      { l:"B", t:"Someone who shows up. Events, trips, supper. Woven into the community you already love.", d:"Shared life, shared people.", s:{ministry:3,booked:0,npc:0,courting:0,timing:0,spiritual:0} },
+      { l:"C", t:"Someone who gets it spiritually. Prays with you, seeks God with you, sees the world the same way.", d:"Spirit-first. Everything else follows.", s:{spiritual:3,timing:2,courting:1,booked:0,ministry:0,npc:0} },
+      { l:"D", t:"Honestly? Someone who fits into the life you've already built without blowing it up.", d:"Integration, not disruption.", s:{booked:3,npc:1,timing:0,courting:0,ministry:0,spiritual:0} }
+    ]
+  },
+  {
+    cat: "Final check",
+    text: "What would your closest church friends say about your love life?",
+    opts: [
+      { l:"A", t:"\"They're so intentional it's kind of scary but also admirable.\"", d:"Respect with mild concern.", s:{courting:3,npc:1,spiritual:0,timing:0,booked:0,ministry:0} },
+      { l:"B", t:"\"They're fine. They're always fine. I think. We don't really know.\"", d:"The mystery remains.", s:{npc:3,booked:1,timing:1,courting:0,ministry:0,spiritual:0} },
+      { l:"C", t:"\"They'll be ready when God says it's time. They actually believe that.\"", d:"Genuine faith. Not a cope.", s:{timing:3,spiritual:1,courting:0,booked:0,ministry:0,npc:0} },
+      { l:"D", t:"\"They're waiting for a sign. There have been several signs. They're still waiting.\"", d:"The prophecy pipeline is long.", s:{spiritual:3,timing:1,courting:1,booked:0,ministry:0,npc:0} }
+    ]
+  }
+];
+
+let screen='intro', q=0, sel=null, answers=[], scores={courting:0,timing:0,ministry:0,booked:0,npc:0,spiritual:0};
+
+function logoRow(){return`<div class="logo-row"><div class="logo-dot"></div><div><div class="logo-text">The Church Singles Quiz</div><div class="logo-sub">A self-aware personality profile</div></div></div>`}
+
+function render(){
+  const r=document.getElementById('root');
+  if(screen==='intro') r.innerHTML=renderIntro();
+  else if(screen==='q') r.innerHTML=renderQ();
+  else r.innerHTML=renderResult();
+  attach();
+}
+
+function renderIntro(){return`<div class="fade">${logoRow()}<span class="intro-pill">6 archetypes · 10 questions</span><h1 class="big">Which kind of<br><em>single Christian</em><br>are you?</h1><p class="intro-sub">A lovingly accurate personality quiz for everyone who's navigating faith, feelings, and the young adults WhatsApp group. No judgement. Mostly.</p><div class="archetype-tags"><span class="atag">I'm Not Dating, I'm Courting™</span><span class="atag">God's Timing Lah</span><span class="atag">See You at Every Ministry</span><span class="atag">Fully Booked, Fully Blessed</span><span class="atag">NPC (Main Character)</span><span class="atag">Everything Is Spiritual ✨</span></div><button class="go-btn" id="goBtn">Find out →</button></div>`}
+
+function renderQ(){
+  const qu=QUESTIONS[q];
+  const pct=Math.round((q/QUESTIONS.length)*100);
+  return`<div class="slide">${logoRow()}<div class="prog-wrap"><div class="prog-row"><span class="prog-label">Your profile</span><span class="prog-num">${q+1} / ${QUESTIONS.length}</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div></div><div class="q-cat">${qu.cat}</div><h2 class="q-text">${qu.text}</h2><div class="opts">${qu.opts.map((o,i)=>`<button class="opt${sel===i?' sel':''}" data-i="${i}"><span class="opt-letter">${o.l}</span><div><div class="opt-title">${o.t}</div><div class="opt-desc">${o.d}</div></div></button>`).join('')}</div><div class="nav">${q>0?'<button class="back-btn" id="bk">← Back</button>':'<span></span>'}<button class="next-btn${sel!==null?' on':''}" id="nx">${q<QUESTIONS.length-1?'Next →':'See my result →'}</button></div></div>`}
+
+function renderResult(){
+  const max=Math.max(...Object.values(scores));
+  const winner=Object.keys(scores).find(k=>scores[k]===max);
+  const p=ARCHETYPES[winner];
+  const total=QUESTIONS.length*3;
+  const entries=[
+    {k:'courting',l:'I\'m Courting™'},{k:'timing',l:'God\'s Timing Lah'},
+    {k:'ministry',l:'Every Ministry'},{k:'booked',l:'Fully Booked'},
+    {k:'npc',l:'NPC (Main Char)'},{k:'spiritual',l:'Everything Spiritual'}
+  ].sort((a,b)=>scores[b.k]-scores[a.k]);
+
+  return`<div class="fade">${logoRow()}<span class="res-pill">Your result</span>
+  <div class="res-name">${p.name}<br><span>${p.name2}</span></div>
+  <div class="res-tagline">${p.tagline}</div>
+  <div class="res-divider"></div>
+  <div class="res-catchphrase"><cite>Catchphrase</cite>${p.catchphrase}</div>
+  <p class="res-desc">${p.desc}</p>
+  <div class="traits">
+    <div class="trait-card"><div class="trait-label">Energy</div><div class="trait-val">${p.energy}</div></div>
+    <div class="trait-card"><div class="trait-label">Love style</div><div class="trait-val">${p.loveStyle}</div></div>
+    <div class="trait-card"><div class="trait-label">Red flag (for you)</div><div class="trait-val">${p.redFlag}</div></div>
+    <div class="trait-card"><div class="trait-label">Vibe</div><div class="trait-val">${p.vibe}</div></div>
+  </div>
+  <div class="rumour-box"><i class="ti ti-message-circle rumour-icon" aria-hidden="true"></i><div><div class="rumour-label">Church rumour</div><div class="rumour-text">${p.rumour}</div></div></div>
+  <div class="bars-wrap"><div class="bar-label-row">Your archetype breakdown</div>
+  ${entries.map(e=>{const pct=Math.round((scores[e.k]/total)*100);const isW=e.k===winner;return`<div class="bar-row"><span class="bar-name">${e.l}</span><div class="bar-track"><div class="bar-fill${isW?' w':''}" style="width:${Math.max(pct,2)}%"></div></div><span class="bar-pct${isW?' w':''}">${pct}%</span></div>`}).join('')}
+  </div>
+  <div class="also-label">You might also recognise yourself in</div>
+  <div class="also-chips">${p.others.map(o=>`<span class="chip">${o}</span>`).join('')}</div>
+  <div class="res-actions">
+    <button class="retry-btn" id="retryBtn">Retake quiz</button>
+    <button class="share-btn" id="shareBtn">Share your result ↗</button>
+  </div></div>`}
+
+function attach(){
+  const go=document.getElementById('goBtn');
+  if(go)go.addEventListener('click',()=>{screen='q';q=0;sel=null;scores={courting:0,timing:0,ministry:0,booked:0,npc:0,spiritual:0};answers=[];render()});
+
+  document.querySelectorAll('.opt').forEach(b=>{b.addEventListener('click',()=>{sel=parseInt(b.dataset.i);render()})});
+
+  const nx=document.getElementById('nx');
+  if(nx)nx.addEventListener('click',()=>{
+    if(sel===null)return;
+    const opt=QUESTIONS[q].opts[sel];
+    Object.keys(opt.s).forEach(k=>scores[k]+=opt.s[k]);
+    answers[q]=sel;
+    if(q<QUESTIONS.length-1){q++;sel=answers[q]!==undefined?answers[q]:null;screen='q';}
+    else screen='result';
+    render();
+  });
+
+  const bk=document.getElementById('bk');
+  if(bk)bk.addEventListener('click',()=>{
+    if(answers[q]!==undefined){const opt=QUESTIONS[q].opts[answers[q]];Object.keys(opt.s).forEach(k=>scores[k]-=opt.s[k]);}
+    q--;sel=answers[q]!==undefined?answers[q]:null;screen='q';render();
+  });
+
+  const rb=document.getElementById('retryBtn');
+  if(rb)rb.addEventListener('click',()=>{screen='intro';q=0;sel=null;scores={courting:0,timing:0,ministry:0,booked:0,npc:0,spiritual:0};answers=[];render()});
+
+  const sb=document.getElementById('shareBtn');
+  if(sb)sb.addEventListener('click',()=>{
+    const max=Math.max(...Object.values(scores));
+    const winner=Object.keys(scores).find(k=>scores[k]===max);
+    const p=ARCHETYPES[winner];
+    sendPrompt(`I got ${p.name} ${p.name2} on the Single Christian quiz — ${p.tagline} Tell me more about this archetype and what it says about how I approach relationships.`);
+  });
+}
+
+render();
+</script>
